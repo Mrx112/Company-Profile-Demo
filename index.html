@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packaging Co. · Proposal Dashboard</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+
+        <!-- header: project identity -->
+        <div class="proposal-header">
+            <div class="title-section">
+                <h1>📦 PackagingCo · Web Proposal</h1>
+                <span class="badge"><i class="fas fa-file-alt" style="margin-right: 6px;"></i>informational website · 6 pages + chat & form</span>
+            </div>
+            <div class="client-tag">
+                <i class="fas fa-building"></i>
+                <span><strong>Client:</strong> Packaging Company</span>
+            </div>
+        </div>
+
+        <!-- KPI row -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="stat-content">
+                    <h3>6</h3>
+                    <p>core pages</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-comment-dots"></i></div>
+                <div class="stat-content">
+                    <h3>2</h3>
+                    <p>live features</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-code"></i></div>
+                <div class="stat-content">
+                    <h3>PHP/HTML</h3>
+                    <p>full stack</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="stat-content">
+                    <h3>SEO</h3>
+                    <p>optimized</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- chart + page list -->
+        <div class="chart-mini-container">
+            <div class="chart-text">
+                <h2><i class="fas fa-sitemap" style="color: #2468a0; margin-right: 10px;"></i>Page structure & SEO foundation</h2>
+                <p>6 pages with semantic markup, meta tags, fast hosting (PHP). Integrated contact & live chat increase conversion.</p>
+                <div class="pill-list">
+                    <span class="pill"><i class="fas fa-check-circle"></i> Home</span>
+                    <span class="pill"><i class="fas fa-check-circle"></i> About Us</span>
+                    <span class="pill"><i class="fas fa-check-circle"></i> Services</span>
+                    <span class="pill"><i class="fas fa-check-circle"></i> Products</span>
+                    <span class="pill"><i class="fas fa-check-circle"></i> FAQ</span>
+                    <span class="pill"><i class="fas fa-check-circle"></i> Contact Us</span>
+                </div>
+            </div>
+            <div class="chart-canvas-box">
+                <canvas id="pageChart"></canvas>
+            </div>
+        </div>
+
+        <!-- pages preview (tiles) -->
+        <div class="section-label">
+            <div class="line"></div>
+            <h3>📄 halaman utama website</h3>
+            <div class="line"></div>
+        </div>
+        <div class="website-pages-showcase">
+            <div class="page-tile"><div class="page-icon"><i class="fas fa-home"></i></div><h4>Home</h4><p>hero, USP, CTA</p></div>
+            <div class="page-tile"><div class="page-icon"><i class="fas fa-users"></i></div><h4>About Us</h4><p>cerita perusahaan, misi</p></div>
+            <div class="page-tile"><div class="page-icon"><i class="fas fa-cogs"></i></div><h4>Services</h4><p>custom packaging, design</p></div>
+            <div class="page-tile"><div class="page-icon"><i class="fas fa-box-open"></i></div><h4>Products</h4><p>katalog box, bahan</p></div>
+            <div class="page-tile"><div class="page-icon"><i class="fas fa-question-circle"></i></div><h4>FAQ</h4><p>pertanyaan umum</p></div>
+            <div class="page-tile"><div class="page-icon"><i class="fas fa-envelope"></i></div><h4>Contact Us</h4><p>form + peta</p></div>
+        </div>
+
+        <!-- FEATURE HIGHLIGHT: contact form + live chat -->
+        <div class="section-label" style="margin-top: 48px;">
+            <div class="line"></div>
+            <h3>⚡ fitur wajib (integrasi langsung)</h3>
+            <div class="line"></div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-edit"></i></div>
+                <div class="feature-desc">
+                    <h4>Contact form</h4>
+                    <p>PHP + AJAX, validasi, email otomatis ke client. Anti-spam, desain responsif.</p>
+                    <div class="mock-button"><i class="fas fa-check-circle" style="color: #238551;"></i> contoh: nama, email, pesan</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                <div class="feature-desc">
+                    <h4>Live chat</h4>
+                    <p>Widget popup (Tawk.to / custom). Admin langsung merespon pengunjung.</p>
+                    <div class="mock-button"><i class="fas fa-comment-dots"></i> chat online • 2 agen</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                <div class="feature-desc">
+                    <h4>Design profesional</h4>
+                    <p>clean, industrial feel, warna hijau/blue aksen, easy navigation.</p>
+                    <div class="mock-button"><i class="fas fa-thumbs-up"></i> user-friendly</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS & SEO -->
+        <div class="skills-panel">
+            <div style="flex:2;">
+                <h5><i class="fas fa-crown" style="margin-right: 8px;"></i>Keahlian utama developer</h5>
+                <div class="skill-badge-container">
+                    <span class="skill-badge"><i class="fab fa-php"></i> PHP</span>
+                    <span class="skill-badge"><i class="fas fa-paint-brush"></i> Graphic Design</span>
+                    <span class="skill-badge"><i class="fas fa-chart-simple"></i> SEO</span>
+                    <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS</span>
+                    <span class="skill-badge"><i class="fab fa-html5"></i> HTML</span>
+                    <span class="skill-badge"><i class="fas fa-laptop-code"></i> Web Dev</span>
+                    <span class="skill-badge"><i class="fas fa-mouse-pointer"></i> UX design</span>
+                </div>
+            </div>
+            <div style="color:#bfdcf5; font-size:1.1rem; border-left: 1px solid #3a5770; padding-left: 25px;">
+                <i class="fas fa-rocket"></i> on‑page SEO • schema • speed
+            </div>
+        </div>
+
+        <!-- PREVIOUS WORK EXAMPLES -->
+        <div class="examples-section">
+            <h3>📋 contoh pekerjaan sebelumnya (informational websites)</h3>
+            <div class="example-cards">
+                <div class="example-card">
+                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%234282b5"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">EcoPack solutions</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">home · about · products</text></svg>' alt="EcoPack preview">
+                    <div class="example-title">EcoPack mfg</div>
+                    <div class="example-desc">6 halaman, live chat, form inquiry. SEO rangking 1 local.</div>
+                </div>
+                <div class="example-card">
+                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%233a6f8d"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">CartonCraft</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">services · FAQ · contact</text></svg>' alt="CartonCraft">
+                    <div class="example-title">CartonCraft Inc</div>
+                    <div class="example-desc">desain katalog produk, form request quote, integrated chat.</div>
+                </div>
+                <div class="example-card">
+                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%2322536e"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">FlexiPack</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">custom packaging design</text></svg>' alt="FlexiPack">
+                    <div class="example-title">FlexiPack</div>
+                    <div class="example-desc">company profile + blog, live chat, modern UI.</div>
+                </div>
+                <div class="example-card">
+                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%23305d80"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">PrimeBox</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">service area · contact form</text></svg>' alt="PrimeBox">
+                    <div class="example-title">PrimeBox Ltd</div>
+                    <div class="example-desc">6 halaman, strong SEO, conversion rate +40%.</div>
+                </div>
+            </div>
+            <p style="margin-top: 16px; color: #3b6c92; background: #e7f1fa; padding: 12px 24px; border-radius: 60px; display: inline-block;"><i class="fas fa-check-circle" style="color: #1f7a4b;"></i> portfolio lengkap tersedia — semua proyek menggunakan PHP, CSS modern, dan optimasi grafis.</p>
+        </div>
+
+        <!-- footer -->
+        <div class="foot-note">
+            <span><i class="fas fa-calendar-alt"></i> Proposal siap presentasi – Packaging Company Web</span>
+            <span><i class="fas fa-sync-alt"></i> live demo & estimasi 6 minggu</span>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>

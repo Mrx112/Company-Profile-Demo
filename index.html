@@ -3,180 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packaging Co. · Proposal Dashboard</title>
+    <title>PremiumPack - Solusi Kemasan Profesional</title>
     <!-- Font Awesome 5 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="dashboard">
-
-        <!-- header: project identity -->
-        <div class="proposal-header">
-            <div class="title-section">
-                <h1>📦 PackagingCo · Web Proposal</h1>
-                <span class="badge"><i class="fas fa-file-alt" style="margin-right: 6px;"></i>informational website · 6 pages + chat & form</span>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-box"></i>
+                <span>PremiumPack</span>
             </div>
-            <div class="client-tag">
-                <i class="fas fa-building"></i>
-                <span><strong>Client:</strong> Packaging Company</span>
-            </div>
-        </div>
-
-        <!-- KPI row -->
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
-                <div class="stat-content">
-                    <h3>6</h3>
-                    <p>core pages</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-comment-dots"></i></div>
-                <div class="stat-content">
-                    <h3>2</h3>
-                    <p>live features</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-code"></i></div>
-                <div class="stat-content">
-                    <h3>PHP/HTML</h3>
-                    <p>full stack</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="stat-content">
-                    <h3>SEO</h3>
-                    <p>optimized</p>
-                </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
+    </nav>
 
-        <!-- chart + page list -->
-        <div class="chart-mini-container">
-            <div class="chart-text">
-                <h2><i class="fas fa-sitemap" style="color: #2468a0; margin-right: 10px;"></i>Page structure & SEO foundation</h2>
-                <p>6 pages with semantic markup, meta tags, fast hosting (PHP). Integrated contact & live chat increase conversion.</p>
-                <div class="pill-list">
-                    <span class="pill"><i class="fas fa-check-circle"></i> Home</span>
-                    <span class="pill"><i class="fas fa-check-circle"></i> About Us</span>
-                    <span class="pill"><i class="fas fa-check-circle"></i> Services</span>
-                    <span class="pill"><i class="fas fa-check-circle"></i> Products</span>
-                    <span class="pill"><i class="fas fa-check-circle"></i> FAQ</span>
-                    <span class="pill"><i class="fas fa-check-circle"></i> Contact Us</span>
+    <!-- Home Section -->
+    <section id="home" class="section hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Solusi Kemasan Premium untuk Bisnis Anda</h1>
+                <p>Kemasan berkualitas tinggi yang melindungi produk dan meningkatkan brand image Anda. Lebih dari 10 tahun berpengalaman dalam industri packaging.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
+                    <a href="#products" class="btn btn-secondary">Lihat Produk</a>
                 </div>
             </div>
-            <div class="chart-canvas-box">
-                <canvas id="pageChart"></canvas>
-            </div>
-        </div>
-
-        <!-- pages preview (tiles) -->
-        <div class="section-label">
-            <div class="line"></div>
-            <h3>📄 halaman utama website</h3>
-            <div class="line"></div>
-        </div>
-        <div class="website-pages-showcase">
-            <div class="page-tile"><div class="page-icon"><i class="fas fa-home"></i></div><h4>Home</h4><p>hero, USP, CTA</p></div>
-            <div class="page-tile"><div class="page-icon"><i class="fas fa-users"></i></div><h4>About Us</h4><p>cerita perusahaan, misi</p></div>
-            <div class="page-tile"><div class="page-icon"><i class="fas fa-cogs"></i></div><h4>Services</h4><p>custom packaging, design</p></div>
-            <div class="page-tile"><div class="page-icon"><i class="fas fa-box-open"></i></div><h4>Products</h4><p>katalog box, bahan</p></div>
-            <div class="page-tile"><div class="page-icon"><i class="fas fa-question-circle"></i></div><h4>FAQ</h4><p>pertanyaan umum</p></div>
-            <div class="page-tile"><div class="page-icon"><i class="fas fa-envelope"></i></div><h4>Contact Us</h4><p>form + peta</p></div>
-        </div>
-
-        <!-- FEATURE HIGHLIGHT: contact form + live chat -->
-        <div class="section-label" style="margin-top: 48px;">
-            <div class="line"></div>
-            <h3>⚡ fitur wajib (integrasi langsung)</h3>
-            <div class="line"></div>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-edit"></i></div>
-                <div class="feature-desc">
-                    <h4>Contact form</h4>
-                    <p>PHP + AJAX, validasi, email otomatis ke client. Anti-spam, desain responsif.</p>
-                    <div class="mock-button"><i class="fas fa-check-circle" style="color: #238551;"></i> contoh: nama, email, pesan</div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Klien Puas</p>
                 </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-comments"></i></div>
-                <div class="feature-desc">
-                    <h4>Live chat</h4>
-                    <p>Widget popup (Tawk.to / custom). Admin langsung merespon pengunjung.</p>
-                    <div class="mock-button"><i class="fas fa-comment-dots"></i> chat online • 2 agen</div>
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Tahun Pengalaman</p>
                 </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-palette"></i></div>
-                <div class="feature-desc">
-                    <h4>Design profesional</h4>
-                    <p>clean, industrial feel, warna hijau/blue aksen, easy navigation.</p>
-                    <div class="mock-button"><i class="fas fa-thumbs-up"></i> user-friendly</div>
+                <div class="stat-item">
+                    <h3>1000+</h3>
+                    <p>Proyek Selesai</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- SKILLS & SEO -->
-        <div class="skills-panel">
-            <div style="flex:2;">
-                <h5><i class="fas fa-crown" style="margin-right: 8px;"></i>Keahlian utama developer</h5>
-                <div class="skill-badge-container">
-                    <span class="skill-badge"><i class="fab fa-php"></i> PHP</span>
-                    <span class="skill-badge"><i class="fas fa-paint-brush"></i> Graphic Design</span>
-                    <span class="skill-badge"><i class="fas fa-chart-simple"></i> SEO</span>
-                    <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS</span>
-                    <span class="skill-badge"><i class="fab fa-html5"></i> HTML</span>
-                    <span class="skill-badge"><i class="fas fa-laptop-code"></i> Web Dev</span>
-                    <span class="skill-badge"><i class="fas fa-mouse-pointer"></i> UX design</span>
-                </div>
+    <!-- About Us Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tentang PremiumPack</h2>
+                <div class="underline"></div>
             </div>
-            <div style="color:#bfdcf5; font-size:1.1rem; border-left: 1px solid #3a5770; padding-left: 25px;">
-                <i class="fas fa-rocket"></i> on‑page SEO • schema • speed
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Mitra Kemasan Terpercaya Anda</h3>
+                    <p>PremiumPack didirikan pada tahun 2014 dengan visi menjadi solusi kemasan terdepan di Indonesia. Kami memahami bahwa kemasan bukan hanya pelindung produk, tetapi juga wajah brand Anda di mata konsumen.</p>
+                    <p>Dengan tim desain berpengalaman dan fasilitas produksi modern, kami menghadirkan kemasan berkualitas tinggi yang menggabungkan fungsi, estetika, dan keberlanjutan lingkungan.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <span>Ramah Lingkungan</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <span>Kualitas Premium</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Tepat Waktu</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <span>Dukungan 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'%3E%3Crect width='500' height='400' fill='%232b4b6f'/%3E%3Ctext x='50' y='200' font-family='Arial' font-size='24' fill='white'%3EFasilitas Produksi Modern%3C/text%3E%3C/svg%3E" alt="Fasilitas PremiumPack">
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- PREVIOUS WORK EXAMPLES -->
-        <div class="examples-section">
-            <h3>📋 contoh pekerjaan sebelumnya (informational websites)</h3>
-            <div class="example-cards">
-                <div class="example-card">
-                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%234282b5"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">EcoPack solutions</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">home · about · products</text></svg>' alt="EcoPack preview">
-                    <div class="example-title">EcoPack mfg</div>
-                    <div class="example-desc">6 halaman, live chat, form inquiry. SEO rangking 1 local.</div>
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Layanan Kami</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3>Desain Kemasan</h3>
+                    <p>Tim desainer profesional siap membantu menciptakan desain kemasan yang menarik dan sesuai dengan brand Anda.</p>
                 </div>
-                <div class="example-card">
-                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%233a6f8d"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">CartonCraft</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">services · FAQ · contact</text></svg>' alt="CartonCraft">
-                    <div class="example-title">CartonCraft Inc</div>
-                    <div class="example-desc">desain katalog produk, form request quote, integrated chat.</div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Cetak Kemasan</h3>
+                    <p>Percetakan berkualitas tinggi dengan teknologi terkini untuk hasil cetak yang tajam dan warna akurat.</p>
                 </div>
-                <div class="example-card">
-                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%2322536e"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">FlexiPack</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">custom packaging design</text></svg>' alt="FlexiPack">
-                    <div class="example-title">FlexiPack</div>
-                    <div class="example-desc">company profile + blog, live chat, modern UI.</div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Custom Packaging</h3>
+                    <p>Solusi kemasan custom sesuai spesifikasi produk Anda, dari ukuran, bentuk, hingga material.</p>
                 </div>
-                <div class="example-card">
-                    <img src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130"><rect width="200" height="130" fill="%23305d80"/><text x="20" y="70" font-family="Arial" font-size="16" fill="white">PrimeBox</text><text x="20" y="96" font-family="Arial" font-size="11" fill="white">service area · contact form</text></svg>' alt="PrimeBox">
-                    <div class="example-title">PrimeBox Ltd</div>
-                    <div class="example-desc">6 halaman, strong SEO, conversion rate +40%.</div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Pengiriman</h3>
+                    <p>Layanan pengiriman ke seluruh Indonesia dengan kemasan aman dan tepat waktu.</p>
                 </div>
             </div>
-            <p style="margin-top: 16px; color: #3b6c92; background: #e7f1fa; padding: 12px 24px; border-radius: 60px; display: inline-block;"><i class="fas fa-check-circle" style="color: #1f7a4b;"></i> portfolio lengkap tersedia — semua proyek menggunakan PHP, CSS modern, dan optimasi grafis.</p>
         </div>
+    </section>
 
-        <!-- footer -->
-        <div class="foot-note">
-            <span><i class="fas fa-calendar-alt"></i> Proposal siap presentasi – Packaging Company Web</span>
-            <span><i class="fas fa-sync-alt"></i> live demo & estimasi 6 minggu</span>
+    <!-- Products Section -->
+    <section id="products" class="section products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Produk Kami</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23365e7d'/%3E%3Ctext x='50' y='110' font-family='Arial' font-size='16' fill='white'%3EKotak Karton%3C/text%3E%3C/svg%3E" alt="Kotak Karton">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kotak Karton</h3>
+                        <p>Berbagai ukuran dan ketebalan untuk pengiriman dan penyimpanan.</p>
+                        <div class="product-meta">
+                            <span class="material">Karton / Duplex</span>
+                            <a href="#contact" class="btn-inquiry">Request Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%2342719e'/%3E%3Ctext x='50' y='110' font-family='Arial' font-size='16' fill='white'%3EKemasan Makanan%3C/text%3E%3C/svg%3E" alt="Kemasan Makanan">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kemasan Makanan</h3>
+                        <p>Food-grade packaging untuk produk kuliner Anda.</p>
+                        <div class="product-meta">
+                            <span class="material">Food Grade</span>
+                            <a href="#contact" class="btn-inquiry">Request Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23275473'/%3E%3Ctext x='50' y='110' font-family='Arial' font-size='16' fill='white'%3EBubble Wrap%3C/text%3E%3C/svg%3E" alt="Bubble Wrap">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bubble Wrap</h3>
+                        <p>Pelindung produk untuk pengiriman barang rapuh.</p>
+                        <div class="product-meta">
+                            <span class="material">LDPE</span>
+                            <a href="#contact" class="btn-inquiry">Request Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%231a405a'/%3E%3Ctext x='50' y='110' font-family='Arial' font-size='16' fill='white'%3EKemasan Kustom%3C/text%3E%3C/svg%3E" alt="Kemasan Kustom">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kemasan Kustom</h3>
+                        <p>Desain dan ukuran khusus sesuai kebutuhan produk Anda.</p>
+                        <div class="product-meta">
+                            <span class="material">Custom</span>
+                            <a href="#contact" class="btn-inquiry">Request Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pertanyaan Umum</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Berapa minimal order (MOQ) untuk kemasan?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Minimal Order Quantity bervariasi tergantung jenis produk. Untuk kemasan standar mulai dari 100 pcs, sementara untuk kemasan custom minimal 500 pcs. Tim kami akan membantu menyesuaikan dengan kebutuhan Anda.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Berapa lama proses produksi?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Lead time produksi umumnya 7-14 hari kerja setelah desain disetujui. Untuk pesanan besar atau desain kompleks mungkin memerlukan waktu lebih lama. Kami akan memberikan estimasi waktu yang akurat saat konsultasi.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Apakah bisa minta bantuan desain?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami menyediakan layanan bantuan desain gratis untuk pemesanan pertama. Tim desain kami akan membantu mewujudkan konsep kemasan impian Anda. Untuk revisi desain, kami memberikan 2x kesempatan revisi.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Bahan apa saja yang tersedia?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Kami menyediakan berbagai material: karton duplex, kraft, ivory, corrugated, cardboard, serta material food-grade untuk kemasan makanan. Semua bahan tersedia dalam berbagai ketebalan dan kualitas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Apakah melayani pengiriman ke luar kota?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami melayani pengiriman ke seluruh Indonesia bekerja sama dengan berbagai jasa ekspedisi terpercaya. Biaya pengiriman akan dihitung berdasarkan berat dan tujuan pengiriman.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Bagaimana cara mendapatkan sample?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Kami menyediakan sample produk dengan biaya pengiriman ditanggung pemesan. Untuk sample custom, akan dikenakan biaya produksi sample yang dapat dikembalikan jika melanjutkan pemesanan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hubungi Kami</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Industri Raya No. 45, Semarang 10230</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>+62 21 5555 1234</p>
+                            <p>+62 812 8888 9999 (WhatsApp)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@premiumpack.co.id</p>
+                            <p>sales@premiumpack.co.id</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 17.00</p>
+                            <p>Sabtu: 08.00 - 14.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Nama Lengkap" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Email Perusahaan" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="phone" placeholder="Nomor Telepon">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="company" placeholder="Nama Perusahaan">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select id="subject" required>
+                                <option value="" disabled selected>Pilih Subjek</option>
+                                <option value="Informasi Produk">Informasi Produk</option>
+                                <option value="Permintaan Quote">Permintaan Quote</option>
+                                <option value="Konsultasi Desain">Konsultasi Desain</option>
+                                <option value="Kerjasama">Kerjasama</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                    <div id="formStatus" class="form-status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-box"></i>
+                        <span>PremiumPack</span>
+                    </div>
+                    <p>Solusi kemasan profesional untuk bisnis Anda. Kualitas premium, pengiriman tepat waktu.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Produk</h4>
+                    <ul>
+                        <li><a href="#products">Kotak Karton</a></li>
+                        <li><a href="#products">Kemasan Makanan</a></li>
+                        <li><a href="#products">Bubble Wrap</a></li>
+                        <li><a href="#products">Kemasan Kustom</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Dapatkan update produk dan promo terbaru</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Anda">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PremiumPack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comment"></i>
+            <span class="chat-notification">1</span>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h4>PremiumPack Support</h4>
+                        <p><span class="online-dot"></span> Online</p>
+                    </div>
+                </div>
+                <button id="closeChat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="avatar"><i class="fas fa-robot"></i></div>
+                    <div class="bubble">Halo! Selamat datang di PremiumPack. Ada yang bisa kami bantu? Silakan tanya tentang produk, layanan, atau konsultasi desain.</div>
+                </div>
+            </div>
+            <div class="chat-options">
+                <button class="chat-option" onclick="sendQuickMessage('Harga produk?')">💰 Harga produk</button>
+                <button class="chat-option" onclick="sendQuickMessage('Minimal order?')">📦 Minimal order</button>
+                <button class="chat-option" onclick="sendQuickMessage('Bantuan desain')">🎨 Bantuan desain</button>
+                <button class="chat-option" onclick="sendQuickMessage('Info pengiriman')">🚚 Info pengiriman</button>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ketik pesan..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
 

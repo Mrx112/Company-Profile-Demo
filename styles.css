@@ -1029,4 +1029,130 @@ body {
     .chat-box {
         width: 300px;
     }
+}/* ===== WHY CHOOSE US ===== */
+.why-us {
+    background: #fefdfb;
+}
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.why-card {
+    background: var(--white);
+    border-radius: 18px;
+    text-align: center;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+}
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+.why-card i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+.why-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.why-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ===== QUOTE ESTIMATOR ===== */
+.quote-estimator {
+    background: linear-gradient(135deg, #f3f7fb 0%, #fcf8f5 100%);
+}
+.quote-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+.quote-form {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+.quote-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.quote-form .form-group {
+    margin-bottom: 15px;
+}
+.quote-form input,
+.quote-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border:1px solid #e1e8ed;
+    border-radius:8px;
+    font-size: 0.95rem;
+}
+.quote-result {
+    background: rgba(30,60,79,0.05);
+    border: 1px dashed rgba(43,95,138,0.28);
+    border-radius: 18px;
+    padding: 30px;
+    min-height: 180px;
+}
+.quote-result h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+.quote-result p {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+    background: var(--white);
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+.testimonial-card {
+    border: 1px solid rgba(43,95,138,0.16);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    background: #fff;
+}
+.testimonial-card p {
+    color: var(--text-light);
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+.testimonial-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+.rating i {
+    color: #ffb400;
+    margin-right: 2px;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 1024px) {
+    .quote-content {
+        grid-template-columns: 1fr;
+    }
+    .services-grid,
+    .products-grid,
+    .testimonials-grid,
+    .why-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 }

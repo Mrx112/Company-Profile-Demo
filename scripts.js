@@ -4,34 +4,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
-    // Toggle mobile menu
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         navToggle.querySelector('i').classList.toggle('fa-bars');
         navToggle.querySelector('i').classList.toggle('fa-times');
     });
 
-    // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             navToggle.querySelector('i').classList.add('fa-bars');
             navToggle.querySelector('i').classList.remove('fa-times');
-            
-            // Update active link
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
         });
     });
 
-    // Update active link on scroll
     window.addEventListener('scroll', function() {
         let sections = document.querySelectorAll('section');
-        let scrollPosition = window.scrollY + 100;
+        let scrollPosition = window.scrollY + 120;
 
         sections.forEach(section => {
-            if (scrollPosition >= section.offsetTop && 
-                scrollPosition < section.offsetTop + section.offsetHeight) {
+            if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
                 let id = section.getAttribute('id');
                 navLinks.forEach(link => {
                     link.classList.remove('active');
@@ -45,19 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
-    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
         question.addEventListener('click', () => {
-            // Close other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
+            faqItems.forEach(other => {
+                if (other !== item && other.classList.contains('active')) {
+                    other.classList.remove('active');
                 }
             });
-            
-            // Toggle current item
             item.classList.toggle('active');
         });
     });
@@ -68,8 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form data
+
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
@@ -79,28 +67,24 @@ document.addEventListener('DOMContentLoaded', function() {
             message: document.getElementById('message').value
         };
 
-        // Validation
         if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-            showFormStatus('Mohon lengkapi semua field yang wajib diisi', 'error');
+            showFormStatus('Please complete all required fields.', 'error');
             return;
         }
 
         if (!isValidEmail(formData.email)) {
-            showFormStatus('Format email tidak valid', 'error');
+            showFormStatus('Please enter a valid email address.', 'error');
             return;
         }
 
-        // Show loading state
         const submitBtn = contactForm.querySelector('.btn-submit');
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
 
-        // Simulate API call
         setTimeout(() => {
-            showFormStatus('Terima kasih! Pesan Anda telah terkirim. Tim PremiumPack akan segera menghubungi Anda.', 'success');
+            showFormStatus('Thank you! Your message has been sent. Our team will contact you shortly.', 'success');
             contactForm.reset();
-            
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }, 1500);
@@ -109,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showFormStatus(message, type) {
         formStatus.textContent = message;
         formStatus.className = 'form-status ' + type;
-        
+
         setTimeout(() => {
             formStatus.textContent = '';
             formStatus.className = 'form-status';
@@ -120,18 +104,97 @@ document.addEventListener('DOMContentLoaded', function() {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
+    // Quote estimator
+    const estimateBtn = document.getElementById('estimateBtn');
+    const quoteResult = document.getElementById('quoteResult');
+    estimateBtn.addEventListener('click', function() {
+        const productType = document.getElementById('productType').value;
+        const materialType = document.getElementById('materialType').value;
+        const quantity = Number(document.getElementById('quantity').value);
+        if (quantity <= 0 || Number.isNaN(quantity)) {
+            quoteResult.innerHTML = '<h3>Please enter a valid quantity.</h3>';
+            return;
+        }
+
+        const basePrices = {
+            standard: 0.55,
+            premium: 1.1,
+            custom: 1.8,
+            food: 1.25
+        };
+
+        const materialMultiplier = {
+            basic: 1,
+            premium: 1.4,
+            eco: 1.2
+        };
+
+        const base = basePrices[productType] || 0.7;
+        const mult = materialMultiplier[materialType] || 1;
+        const estimatedCost = quantity * base * mult;
+        const formattedCost = estimatedCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+
+        quoteResult.innerHTML = `<h3>Estimated Cost: ${formattedCost}</h3><p>For ${quantity} units of ${productType} units with ${materialType} material.</p><p>Request a formal quote with our team for exact production pricing and shipping.</p>`;
+    });
+
+    // Newsletter
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            if (email && isValidEmail(email)) {
+                alert('Thanks for signing up for PremiumPack updates!');
+                this.reset();
+            } else {
+                alert('Please provide a valid email address.');
+            }
+        });
+    }
+
+    // Animated counters
+    const stats = [
+        {id: 'statClients', value: 520},
+        {id: 'statExperience', value: 12},
+        {id: 'statProjects', value: 1180}
+    ];
+
+    function animateStats() {
+        stats.forEach(stat => {
+            const element = document.getElementById(stat.id);
+            if (!element) return;
+            const target = stat.value;
+            let current = 0;
+            const step = Math.ceil(target / 80);
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(interval);
+                } else {
+                    element.textContent = current;
+                }
+            }, 20);
+        });
+    }
+
+    let statsAnimated = false;
+    window.addEventListener('scroll', () => {
+        const heroBottom = document.getElementById('home').offsetHeight;
+        if (!statsAnimated && window.scrollY > heroBottom * 0.5) {
+            statsAnimated = true;
+            animateStats();
+        }
+    });
+
     // Live Chat Widget
     const chatButton = document.getElementById('chatButton');
     const chatBox = document.getElementById('chatBox');
     const closeChat = document.getElementById('closeChat');
-    const chatMessages = document.getElementById('chatMessages');
-    const chatInput = document.getElementById('chatInput');
 
-    // Toggle chat
     chatButton.addEventListener('click', function() {
         chatBox.classList.toggle('active');
         if (chatBox.classList.contains('active')) {
-            // Remove notification
             document.querySelector('.chat-notification').style.display = 'none';
         }
     });
@@ -140,27 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
         chatBox.classList.remove('active');
     });
 
-    // Click outside to close
     document.addEventListener('click', function(e) {
         if (!chatBox.contains(e.target) && !chatButton.contains(e.target)) {
             chatBox.classList.remove('active');
         }
     });
-
-    // Newsletter Form
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-            if (email && isValidEmail(email)) {
-                alert('Terima kasih telah berlangganan newsletter PremiumPack!');
-                this.reset();
-            } else {
-                alert('Mohon masukkan email yang valid');
-            }
-        });
-    }
 });
 
 // Live Chat Functions (global)
@@ -179,42 +226,30 @@ function handleChatKeyPress(event) {
 function sendChatMessage() {
     const chatInput = document.getElementById('chatInput');
     const message = chatInput.value.trim();
-    
     if (!message) return;
-    
-    // Add user message
     addChatMessage(message, 'user');
     chatInput.value = '';
-    
-    // Show typing indicator
     showTypingIndicator();
-    
     setTimeout(() => {
         removeTypingIndicator();
-        
-        // Generate bot response
         const botResponse = generateBotResponse(message);
         addChatMessage(botResponse, 'bot');
-    }, 1500);
+    }, 1200);
 }
 
 function addChatMessage(text, sender) {
     const chatMessages = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}`;
-    
     const avatar = document.createElement('div');
     avatar.className = 'avatar';
     avatar.innerHTML = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
-    
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
     bubble.textContent = text;
-    
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(bubble);
     chatMessages.appendChild(messageDiv);
-    
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
@@ -223,15 +258,12 @@ function showTypingIndicator() {
     const typingDiv = document.createElement('div');
     typingDiv.className = 'message bot typing-indicator';
     typingDiv.id = 'typingIndicator';
-    
     const avatar = document.createElement('div');
     avatar.className = 'avatar';
     avatar.innerHTML = '<i class="fas fa-robot"></i>';
-    
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
-    bubble.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> PremiumPack sedang mengetik...';
-    
+    bubble.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> PremiumPack typing...';
     typingDiv.appendChild(avatar);
     typingDiv.appendChild(bubble);
     chatMessages.appendChild(typingDiv);
@@ -240,43 +272,25 @@ function showTypingIndicator() {
 
 function removeTypingIndicator() {
     const indicator = document.getElementById('typingIndicator');
-    if (indicator) {
-        indicator.remove();
-    }
+    if (indicator) indicator.remove();
 }
 
 function generateBotResponse(userMessage) {
     const lowerMessage = userMessage.toLowerCase();
-    
-    // Bot responses
-    if (lowerMessage.includes('harga') || lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('berapa')) {
-        return 'Untuk informasi harga, kami memiliki berbagai pilihan tergantung jenis kemasan, material, dan quantity. Bisa Anda sebutkan produk apa yang diminati? Saya akan bantu informasikan kisaran harganya.';
+    if (/price|cost|rate/.test(lowerMessage)) {
+        return 'Our prices depend on product type, material, and volume. Would you like an instant quote from the estimator section?';
     }
-    
-    if (lowerMessage.includes('minimal order') || lowerMessage.includes('moq') || lowerMessage.includes('minimum')) {
-        return 'Minimal Order Quantity (MOQ) bervariasi per produk:\n- Kemasan standar: mulai 100 pcs\n- Kemasan custom: mulai 500 pcs\n- Produk jadi: bisa satuan\nAda produk spesifik yang ingin Anda tanyakan?';
+    if (/moq|min(imum)?.*order/.test(lowerMessage)) {
+        return 'MOQ details: Standard packaging starts at 100 units, custom at 500 units, and in-stock products can be quoted per piece.';
     }
-    
-    if (lowerMessage.includes('desain') || lowerMessage.includes('design') || lowerMessage.includes('bantuan')) {
-        return 'Ya, kami menyediakan layanan bantuan desain kemasan! Tim desain kami akan membantu mewujudkan konsep kemasan Anda. Fitur:\n✅ Gratis konsultasi awal\n✅ 2x revisi desain\n✅ File siap cetak\n✅ Bantuan pemilihan material\nTertarik konsultasi desain?';
+    if (/design|support|creative/.test(lowerMessage)) {
+        return 'We offer free design consultation, two design revisions, and print-ready artwork packages. Ready to start your brand concept?';
     }
-    
-    if (lowerMessage.includes('pengiriman') || lowerMessage.includes('kirim') || lowerMessage.includes('delivery')) {
-        return 'Info pengiriman PremiumPack:\n📦 Seluruh Indonesia\n🚚 Kerjasama dengan JNE, TIKI, SiCepat, J&T\n⏱ Estimasi: 2-7 hari kerja\n💰 Ongkir dihitung berdasarkan berat & tujuan\n📱 Tracking number akan diberikan setelah pengiriman';
+    if (/shipping|delivery/.test(lowerMessage)) {
+        return 'We ship nationwide via trusted couriers and provide tracking updates. Delivery timelines vary by location.';
     }
-    
-    if (lowerMessage.includes('bahan') || lowerMessage.includes('material')) {
-        return 'Material yang tersedia:\n📦 Karton Duplex (250-400 gsm)\n📦 Kraft (120-300 gsm)\n📦 Ivory (210-350 gsm)\n📦 Corrugated (single/double wall)\n🍱 Food Grade (kertas food-safe)\n🎨 Finishing: doff/glossy, laminasi, spot UV';
+    if (/sample/.test(lowerMessage)) {
+        return 'Samples are available with shipping fee. Custom sample fees are refundable when you place a full confirmed order.';
     }
-    
-    if (lowerMessage.includes('waktu') || lowerMessage.includes('lama') || lowerMessage.includes('lead time') || lowerMessage.includes('selesai')) {
-        return 'Estimasi waktu produksi:\n⚡ Desain: 1-3 hari\n⚡ Produksi: 7-14 hari kerja\n⚡ Pengiriman: 2-7 hari\nTotal estimasi: 2-3 minggu tergantung kompleksitas dan quantity.';
-    }
-    
-    if (lowerMessage.includes('sample') || lowerMessage.includes('contoh')) {
-        return 'Untuk sample:\n✅ Sample produk jadi: ongkir ditanggung pemesan\n✅ Sample custom: dikenakan biaya produksi (dapat dikembalikan jika order)\n✅ Sample bisa dikirim ke alamat Anda\n✅ Tersedia sample kit untuk offline preview';
-    }
-    
-    // Default response
-    return 'Terima kasih telah menghubungi PremiumPack! Untuk informasi lebih detail, silakan tinggalkan email atau nomor telepon Anda, tim kami akan segera menghubungi. Atau Anda bisa memilih topik di atas untuk pertanyaan cepat. Ada yang bisa kami bantu lagi?';
+    return 'Thanks for contacting PremiumPack! Please share your preferred timeline and product type. Our team will follow up with the best quote and samples.';
 }
